@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		178C64722E21206800A00FCC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 178C64712E21206800A00FCC /* Kingfisher */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		178C64472E211DC900A00FCC /* Magazine+369+Travel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magazine+369+Travel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				178C64722E21206800A00FCC /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = "Magazine+369+Travel";
 			packageProductDependencies = (
+				178C64712E21206800A00FCC /* Kingfisher */,
 			);
 			productName = "Magazine+369+Travel";
 			productReference = 178C64472E211DC900A00FCC /* Magazine+369+Travel.app */;
@@ -107,6 +113,9 @@
 			);
 			mainGroup = 178C643E2E211DC900A00FCC;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				178C64702E21206800A00FCC /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 178C64482E211DC900A00FCC /* Products */;
 			projectDirPath = "";
@@ -343,6 +352,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		178C64702E21206800A00FCC /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		178C64712E21206800A00FCC /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 178C64702E21206800A00FCC /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 178C643F2E211DC900A00FCC /* Project object */;
 }
