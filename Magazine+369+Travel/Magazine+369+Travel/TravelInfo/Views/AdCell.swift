@@ -37,7 +37,7 @@ class AdCell: UITableViewCell {
         containerView.layer.cornerRadius = 10
         containerView.clipsToBounds = true
         
-        adLabel.text = "AD"
+        adLabel.text = Text.ad
         adLabel.backgroundColor = .white
         adLabel.layer.cornerRadius = 5
         adLabel.clipsToBounds = true

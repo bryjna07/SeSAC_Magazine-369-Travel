@@ -35,7 +35,7 @@ class TravelTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        mainImageView.image = nil
+        mainImageView.image = .loading
     }
 
     private func configureUI() {
@@ -78,7 +78,7 @@ class TravelTableViewCell: UITableViewCell {
         let likeImage = liked ? Image.heart : Image.heartFill
             likeButton.setImage(UIImage(systemName: likeImage), for: .normal)
         if let imageUrl = travel.image, let url = URL(string: imageUrl) {
-            mainImageView.kf.setImage(with: url)
+            mainImageView.kf.setImage(with: url, placeholder: UIImage(named: Image.loadImage))
         }
     }
 }

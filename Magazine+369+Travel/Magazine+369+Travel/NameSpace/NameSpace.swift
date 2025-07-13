@@ -15,8 +15,13 @@ enum Cell {
 
 enum Text {
     static let magazineTitle = "SeSAC TRAVEL"
+    
+    static let placeholder = "최대 숫자를 입력해주세요"
+    
     static let travelTitle = "도시 상세 정보"
     static let blank = ""
+    static let ad = "AD"
+    
 }
 
 enum Image {
@@ -24,6 +29,7 @@ enum Image {
     static let starFill = "star.fill"
     static let heart = "heart"
     static let heartFill = "heart.fill"
+    static let loadImage = "loading"
 }
 
 enum DateText {

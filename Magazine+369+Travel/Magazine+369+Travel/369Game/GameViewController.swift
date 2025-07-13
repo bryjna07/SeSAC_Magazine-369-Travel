@@ -25,13 +25,13 @@ final class GameViewController: UIViewController {
         
         // 플레이스 홀더 위치, 크기 조절
 //        textField.borderStyle = .line
-        textField.placeholder = "최대 숫자를 입력해주세요"
+        textField.placeholder = Text.placeholder
         textField.layer.borderColor = UIColor.systemGray.cgColor
         textField.layer.borderWidth = 1
         textField.returnKeyType = .done
         
         // 숫자 1부터 + , 표시
-        textView.text = ""
+        textView.text = Text.blank
         textView.font = .systemFont(ofSize: 20)
         textView.textColor = .gray
         textView.isEditable = false
