@@ -10,18 +10,19 @@ import UIKit
 class MagazineTableViewCell: UITableViewCell {
 
     @IBOutlet var photoimageView: UIImageView!
-    
     @IBOutlet var titleLabel: UILabel!
-    
     @IBOutlet var subTitleLabel: UILabel!
-    
     @IBOutlet var dateLabel: UILabel!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-  
         configureCell()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        photoimageView.image = nil
     }
 
     private func configureCell() {

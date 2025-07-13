@@ -15,7 +15,7 @@ class MagazineTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "SeSAC TRAVEL"
+        title = Text.magazineTitle
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         
@@ -40,7 +40,7 @@ class MagazineTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // 네임스페이스
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MagazineCell", for: indexPath) as! MagazineTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.magazineCellid, for: indexPath) as! MagazineTableViewCell
         let data = list[indexPath.row]
         
         cell.titleLabel.text = data.title
@@ -58,12 +58,12 @@ class MagazineTableViewController: UITableViewController {
     // Date 형식 변환
     private func formatDate(_ dateString: String) -> String {
         let forMattter = DateFormatter()
-        forMattter.dateFormat = "yyMMdd"
+        forMattter.dateFormat = DateText.beforeText
         
         if let date = forMattter.date(from: dateString
         ) {
-            forMattter.dateFormat = "yy년 MM월 dd일"
+            forMattter.dateFormat = DateText.afterText
             return forMattter.string(from: date)
-        } else { return ""}
+        } else { return Text.blank}
     }
 }

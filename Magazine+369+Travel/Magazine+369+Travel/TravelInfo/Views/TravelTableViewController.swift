@@ -13,8 +13,16 @@ final class TravelTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tableView.rowHeight = 80
+        
+        tableView.register(UINib(nibName: Cell.adCellid, bundle: nil), forCellReuseIdentifier: Cell.adCellid)
+        
+        title = Text.travelTitle
+        
+        let data = TravelInfo()
+       
+        list = data.travel
+        
+        
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -29,10 +37,23 @@ final class TravelTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TravelCell", for: indexPath) as! TravelTableViewCell
-        
-        return cell
+        if list[indexPath.row].ad {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.adCellid, for: indexPath) as! AdCell
+            
+            cell.travel = list[indexPath.row]
+            return cell
+        } else {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.travelCellid, for: indexPath) as! TravelTableViewCell
+
+            cell.travel = list[indexPath.row]
+            
+            return cell
+        }
     }
-  
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return list[indexPath.row].ad ? 90 : 180
+    }
 
 }
