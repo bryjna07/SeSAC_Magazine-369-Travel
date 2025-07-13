@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jJZ-fo-ACh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jJZ-fo-ACh">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -93,15 +93,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nkp-uc-KWz">
-                                <rect key="frame" x="24" y="142" width="345" height="44"/>
+                                <rect key="frame" x="24" y="83" width="345" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="NeQ-Pu-JIq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldDidEndOnExit:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="asM-kn-zhl"/>
+                                </connections>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bVz-MY-ueA">
-                                <rect key="frame" x="24" y="286" width="345" height="100"/>
+                                <rect key="frame" x="24" y="227" width="345" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="5SF-hL-oPZ"/>
@@ -112,7 +115,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNs-4P-gIh">
-                                <rect key="frame" x="24" y="426" width="345" height="20.333333333333314"/>
+                                <rect key="frame" x="24" y="367" width="345" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -120,6 +123,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="bVz-MY-ueA" firstAttribute="top" secondItem="nkp-uc-KWz" secondAttribute="bottom" constant="100" id="2M3-9t-yb7"/>
                             <constraint firstItem="nkp-uc-KWz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="6Nh-i5-xXE"/>
@@ -131,10 +135,23 @@
                             <constraint firstItem="vNs-4P-gIh" firstAttribute="top" secondItem="bVz-MY-ueA" secondAttribute="bottom" constant="40" id="u38-cw-hp2"/>
                             <constraint firstItem="vNs-4P-gIh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="vUc-lM-e2Y"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="xKk-Y5-dAK" appends="YES" id="s7g-HW-lgH"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" image="gamecontroller.fill" catalog="system" id="dVw-4p-rrb"/>
+                    <connections>
+                        <outlet property="resultLabel" destination="vNs-4P-gIh" id="qjZ-8P-tgF"/>
+                        <outlet property="textField" destination="nkp-uc-KWz" id="eYI-VB-Cf1"/>
+                        <outlet property="textView" destination="bVz-MY-ueA" id="94e-J8-JLN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="xKk-Y5-dAK">
+                    <connections>
+                        <action selector="keyboardDismiss:" destination="BYZ-38-t0r" id="zmF-JO-wzD"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1085" y="-27"/>
         </scene>
@@ -204,6 +221,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="jJZ-fo-ACh" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="U6y-Bd-lYw">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -224,7 +242,7 @@
                     <tabBarItem key="tabBarItem" title="Item" image="newspaper.fill" catalog="system" id="AiS-1R-gFx"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bUk-cx-c0r">
-                        <rect key="frame" x="0.0" y="118" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -243,7 +261,7 @@
                     <tabBarItem key="tabBarItem" title="Item" image="globe" catalog="system" id="YQX-1I-3SI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cd2-gf-ac1">
-                        <rect key="frame" x="0.0" y="118" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
