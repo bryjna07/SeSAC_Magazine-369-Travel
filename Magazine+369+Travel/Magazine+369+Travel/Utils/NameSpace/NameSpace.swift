@@ -17,6 +17,8 @@ enum Text {
     static let magazineTitle = "SeSAC TRAVEL"
     
     static let placeholder = "최대 숫자를 입력해주세요"
+    static let guideText = "1~100 사이의 숫자를 입력해주세요!"
+    static let errorText = "입력오류"
     
     static let travelTitle = "도시 상세 정보"
     static let blank = ""

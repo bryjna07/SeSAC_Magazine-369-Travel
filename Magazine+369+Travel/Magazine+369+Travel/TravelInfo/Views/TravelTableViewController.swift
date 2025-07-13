@@ -9,7 +9,7 @@ import UIKit
 
 final class TravelTableViewController: UITableViewController {
     
-    var list: [Travel] = []
+    private var list: [Travel] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,9 @@ final class TravelTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.adCellid, for: indexPath) as! AdCell
             
             cell.travel = list[indexPath.row]
+            
             return cell
+
         } else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.travelCellid, for: indexPath) as! TravelTableViewCell

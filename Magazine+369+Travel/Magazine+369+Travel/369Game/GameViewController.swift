@@ -15,74 +15,60 @@ final class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        configureUI()
         
+        configureUI()
     }
-
-
+    
     private func configureUI() {
         
-        // 플레이스 홀더 위치, 크기 조절
-//        textField.borderStyle = .line
         textField.placeholder = Text.placeholder
         textField.layer.borderColor = UIColor.systemGray.cgColor
         textField.layer.borderWidth = 1
         textField.returnKeyType = .done
         
-        // 숫자 1부터 + , 표시
         textView.text = Text.blank
         textView.font = .systemFont(ofSize: 20)
         textView.textColor = .gray
         textView.isEditable = false
         textView.textAlignment = .center
         
-        // 3,6,9 포함 -> 박수이모지로 변경
-        resultLabel.text = "결과"
+        resultLabel.text = Text.guideText
         resultLabel.font = .boldSystemFont(ofSize: 30)
         resultLabel.textAlignment = .center
+        resultLabel.numberOfLines = 0
         
     }
     
     @IBAction func textFieldDidEndOnExit(_ sender: UITextField) {
-        guard let text = textField.text, !text.isEmpty else { return }
-        
-        // 숫자만 입력
-        guard let number = Int(text) else { return }
-        
-        var numberText = ""
-        for i in 1...number {
-            let a = "\(i)"
-            let charArray = Array(a)
-            
-            var newString = ""
-            for char in charArray {
-                if char == "3" || char == "6" || char == "9" {
-                    newString.append("👏")
-                } else {
-                    newString.append(char)
-                }
-                numberText += newString + ", "
-            }
-        
-//            } else {
-//                
-//                if i == number {
-//                    numberText += "\(i)"
-//                } else {
-//                    numberText += "\(i), " // 로직 정리, 생각 , 박수표시
-//                }
-//            }
+        guard let text = textField.text, !text.isEmpty, let number = Int(text), number > 0, number <= 100 else {
+            showAlert(title: Text.errorText, message: Text.guideText)
+            return
         }
-        //
-
-        textView.text = numberText
         
+        var numberArray: [String] = []
+        var totalClaps = 0
+        
+        for i in 1...number {
+            
+            let numberString = "\(i)"
+            var newString = ""
+            
+            for char in numberString {
+                if char == "3" || char == "6" || char == "9" {
+                    newString += "👏"
+                    totalClaps += 1
+                } else {
+                    newString += String(char)
+                }
+            }
+            numberArray.append(newString)
+        }
+        textView.text = numberArray.joined(separator: ", ")
+        resultLabel.text = "숫자 \(number)까지 총 박수는 \(totalClaps)번 입니다."
     }
     
     @IBAction func keyboardDismiss(_ sender: Any) {
         view.endEditing(true)
     }
-    
 }
 

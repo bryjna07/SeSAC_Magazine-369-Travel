@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class TravelTableViewCell: UITableViewCell {
+final class TravelTableViewCell: UITableViewCell {
 
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
@@ -65,7 +65,7 @@ class TravelTableViewCell: UITableViewCell {
         
     }
     
-    func configureUIwithData() {
+    private func configureUIwithData() {
         guard let travel else { return }
         titleLabel.text = travel.title
         descriptionLabel.text = travel.description
