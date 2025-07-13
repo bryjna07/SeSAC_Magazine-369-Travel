@@ -6,9 +6,8 @@
 //
 
 import UIKit
-import Kingfisher
 
-class MagazineTableViewController: UITableViewController {
+final class MagazineTableViewController: UITableViewController {
     
     var list: [Magazine] = []
 
@@ -26,7 +25,6 @@ class MagazineTableViewController: UITableViewController {
         
     }
 
-
     override func numberOfSections(in tableView: UITableView) -> Int {
        
         return 1
@@ -39,31 +37,10 @@ class MagazineTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        // 네임스페이스
         let cell = tableView.dequeueReusableCell(withIdentifier: Cell.magazineCellid, for: indexPath) as! MagazineTableViewCell
-        let data = list[indexPath.row]
         
-        cell.titleLabel.text = data.title
-        cell.subTitleLabel.text = data.subtitle
-        cell.titleLabel.text = data.title
-        
-        cell.dateLabel.text = formatDate(data.date)
-        
-        let url = URL(string: list[indexPath.row].image)
-        cell.photoimageView.kf.setImage(with: url)
-        
+        cell.magazine = list[indexPath.row]
+
         return cell
-    }
-    
-    // Date 형식 변환
-    private func formatDate(_ dateString: String) -> String {
-        let forMattter = DateFormatter()
-        forMattter.dateFormat = DateText.beforeText
-        
-        if let date = forMattter.date(from: dateString
-        ) {
-            forMattter.dateFormat = DateText.afterText
-            return forMattter.string(from: date)
-        } else { return Text.blank}
     }
 }
