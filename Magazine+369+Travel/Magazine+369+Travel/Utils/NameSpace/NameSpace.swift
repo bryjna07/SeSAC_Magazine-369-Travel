@@ -28,6 +28,7 @@ enum Text {
 
 enum Image {
     static let star = "star"
+    static let starHalf = "star.leadinghalf.filled"
     static let starFill = "star.fill"
     static let heart = "heart"
     static let heartFill = "heart.fill"

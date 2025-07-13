@@ -13,6 +13,6 @@ struct Travel {
     let image: String?
     let grade: Double?
     let save: Double?
-    let like: Bool?
+    var like: Bool?
     let ad: Bool
 }

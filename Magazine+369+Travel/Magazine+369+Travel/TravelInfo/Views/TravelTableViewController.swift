@@ -21,8 +21,6 @@ final class TravelTableViewController: UITableViewController {
         let data = TravelInfo()
        
         list = data.travel
-        
-        
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -50,6 +48,9 @@ final class TravelTableViewController: UITableViewController {
 
             cell.travel = list[indexPath.row]
             
+            cell.likeButton.tag = indexPath.row // 셀 인덱스 정보 전달
+            cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
+            
             return cell
         }
     }
@@ -57,5 +58,10 @@ final class TravelTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return list[indexPath.row].ad ? 90 : 180
     }
-
+    
+    @objc func likeButtonTapped(_ sender: UIButton) {
+        let index = sender.tag
+        list[index].like?.toggle()
+        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+    }
 }

@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 final class TravelTableViewCell: UITableViewCell {
-
+    
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     
@@ -37,7 +37,7 @@ final class TravelTableViewCell: UITableViewCell {
         super.prepareForReuse()
         mainImageView.image = .loading
     }
-
+    
     private func configureUI() {
         
         selectionStyle = .none
@@ -48,11 +48,7 @@ final class TravelTableViewCell: UITableViewCell {
         descriptionLabel.textColor = .darkGray
         descriptionLabel.numberOfLines = 0
         
-        starImageViews.forEach {
-            $0.image = UIImage(systemName: Image.star)
-        }
-        
-        horizontalStack.alignment = .leading
+        saveCountLabel.textAlignment = .left
         
         saveCountLabel.font = .systemFont(ofSize: 14)
         saveCountLabel.textColor = .gray
@@ -62,7 +58,8 @@ final class TravelTableViewCell: UITableViewCell {
         mainImageView.clipsToBounds = true
         
         likeButton.setTitle(Text.blank, for: .normal)
-        
+        likeButton.tintColor = .systemPink
+        likeButton.backgroundColor = .clear
     }
     
     private func configureUIwithData() {
@@ -70,15 +67,40 @@ final class TravelTableViewCell: UITableViewCell {
         titleLabel.text = travel.title
         descriptionLabel.text = travel.description
         
+        guard let grade = travel.grade else { return }
+        configureStarImages(grade)
+        
         guard let saveCount = travel.save else { return }
-        saveCountLabel.text = "저장 \(saveCount)"
+        saveCountLabel.text = "저장 \(saveCount.formattedWithComma())"
         
         guard let liked = travel.like else { return }
-                
+        
         let likeImage = liked ? Image.heart : Image.heartFill
-            likeButton.setImage(UIImage(systemName: likeImage), for: .normal)
+        likeButton.setImage(UIImage(systemName: likeImage), for: .normal)
+        
         if let imageUrl = travel.image, let url = URL(string: imageUrl) {
             mainImageView.kf.setImage(with: url, placeholder: UIImage(named: Image.loadImage))
+        }
+    }
+    
+    // 별 갯수 디테일 수정 필요
+    private func configureStarImages(_ grade: Double) {
+        for (index, imageView) in starImageViews.enumerated() {
+            let starIndex = Double(index)
+            let difference = grade - starIndex
+
+            let imageName: String
+
+            if difference >= 1.0 {
+                imageName = Image.starFill
+            } else if difference >= 0.5 {
+                imageName = Image.starHalf
+            } else {
+                imageName = Image.star
+            }
+
+            imageView.image = UIImage(systemName: imageName)
+            imageView.tintColor = .systemYellow
         }
     }
 }
