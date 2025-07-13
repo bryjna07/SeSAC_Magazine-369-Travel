@@ -52,9 +52,29 @@ final class GameViewController: UIViewController {
         
         var numberText = ""
         for i in 1...number {
-            numberText += "\(i), " // 로직 정리, 생각 , 박수표시
+            let a = "\(i)"
+            let charArray = Array(a)
+            
+            var newString = ""
+            for char in charArray {
+                if char == "3" || char == "6" || char == "9" {
+                    newString.append("👏")
+                } else {
+                    newString.append(char)
+                }
+                numberText += newString + ", "
+            }
+        
+//            } else {
+//                
+//                if i == number {
+//                    numberText += "\(i)"
+//                } else {
+//                    numberText += "\(i), " // 로직 정리, 생각 , 박수표시
+//                }
+//            }
         }
-        //👏
+        //
 
         textView.text = numberText
         
