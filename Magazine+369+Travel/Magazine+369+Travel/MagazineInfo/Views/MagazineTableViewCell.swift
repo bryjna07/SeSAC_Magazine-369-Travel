@@ -58,6 +58,7 @@ final class MagazineTableViewCell: UITableViewCell {
         photoimageView.kf.setImage(with: url, placeholder: UIImage(named: Image.loadImage))
     }
     
+    /// Extension으로
     // Date 형식 변환
     private func formatDate(_ dateString: String) -> String {
         let forMattter = DateFormatter()

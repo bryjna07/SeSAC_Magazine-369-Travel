@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// TextField 라이브러리
 final class GameViewController: UIViewController {
     
     @IBOutlet var textField: UITextField!

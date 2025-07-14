@@ -83,7 +83,7 @@ final class TravelTableViewCell: UITableViewCell {
         }
     }
     
-    // 별 갯수 디테일 수정 필요
+    /// 별 갯수 디테일 수정 필요
     private func configureStarImages(_ grade: Double) {
         for (index, imageView) in starImageViews.enumerated() {
             let starIndex = Double(index)
