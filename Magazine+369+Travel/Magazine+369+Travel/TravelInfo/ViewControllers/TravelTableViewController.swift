@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 final class TravelTableViewController: UITableViewController {
     
@@ -24,6 +25,17 @@ final class TravelTableViewController: UITableViewController {
        
         list = data.travel
     }
+    
+    //MARK: - Delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if list[indexPath.row].ad {
+            view.makeToast("광고 셀입니다.", position: .bottom)
+        }
+    }
+    
+    
+    //MARK: - DataSource
 
     override func numberOfSections(in tableView: UITableView) -> Int {
 
@@ -60,6 +72,8 @@ final class TravelTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return list[indexPath.row].ad ? 90 : 180
     }
+    
+    //MARK: - ButtonAction
     
     @objc func likeButtonTapped(_ sender: UIButton) {
         let index = sender.tag
