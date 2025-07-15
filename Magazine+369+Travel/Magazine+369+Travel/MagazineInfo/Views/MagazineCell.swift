@@ -53,21 +53,8 @@ final class MagazineCell: UITableViewCell {
         guard let magazine else { return }
         titleLabel.text = magazine.title
         subTitleLabel.text = magazine.subtitle
-        dateLabel.text = formatDate(magazine.date)
+        dateLabel.text = magazine.date.formatDate()
         guard let url = URL(string: magazine.image) else { return }
         photoimageView.kf.setImage(with: url, placeholder: UIImage(named: Image.loadImage))
-    }
-    
-    /// Extension으로
-    // Date 형식 변환
-    private func formatDate(_ dateString: String) -> String {
-        let forMattter = DateFormatter()
-        forMattter.dateFormat = DateText.beforeText
-        
-        if let date = forMattter.date(from: dateString
-        ) {
-            forMattter.dateFormat = DateText.afterText
-            return forMattter.string(from: date)
-        } else { return Text.blank}
     }
 }
