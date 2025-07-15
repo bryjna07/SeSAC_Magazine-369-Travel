@@ -320,6 +320,9 @@
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <action selector="textFieldEditingChanged:" destination="gjN-12-8FM" eventType="editingChanged" id="syj-ej-ltW"/>
+                                    </connections>
                                 </textField>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>

@@ -59,6 +59,10 @@ class CityTableViewController: UITableViewController {
         updateSearchList(searchTextField.text)
     }
     
+    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
+        updateSearchList(sender.text)
+    }
+    
     func updateSearchList(_ searchText: String?) {
         guard let text = searchText, !text.trimmingCharacters(in: .whitespaces).isEmpty  else {
             searchList = filterList
