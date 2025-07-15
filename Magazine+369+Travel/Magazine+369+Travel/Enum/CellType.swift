@@ -11,6 +11,7 @@ enum CellType {
     case magazine
     case travel
     case ad
+    case city
     
     var id: String {
         switch self {
@@ -20,6 +21,8 @@ enum CellType {
             return "TravelCell"
         case .ad:
             return "AdCell"
+        case .city:
+            return "CityCell"
         }
     }
     
@@ -30,6 +33,8 @@ enum CellType {
         case .travel:
             return UINib(nibName: self.id, bundle: nil)
         case .ad:
+            return UINib(nibName: self.id, bundle: nil)
+        case .city:
             return UINib(nibName: self.id, bundle: nil)
         }
     }

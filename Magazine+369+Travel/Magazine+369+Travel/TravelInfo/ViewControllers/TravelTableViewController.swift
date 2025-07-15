@@ -29,8 +29,24 @@ final class TravelTableViewController: UITableViewController {
     //MARK: - Delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if list[indexPath.row].ad {
             view.makeToast("광고 셀입니다.", position: .bottom)
+            
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            
+            let vc = sb.instantiateViewController(withIdentifier: "AdViewController") as! AdViewController
+            
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true)
+            
+        } else {
+            
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            
+            let vc = sb.instantiateViewController(withIdentifier: "PlaceViewController") as! PlaceViewController
+            
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
     
