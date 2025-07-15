@@ -17,14 +17,20 @@ class CityTableViewController: UITableViewController {
     
     var filterList: [City] = []
     
+    var searchList: [City] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchTextField.delegate = self
 
         tableView.register(CellType.city.nib, forCellReuseIdentifier: CellType.city.id)
         list = CityInfo().city
         
         tableView.rowHeight = 200
         tableView.separatorStyle = .none
+        
+        searchTextField.returnKeyType = .done
         
         segmentControl.removeAllSegments()
         
@@ -50,30 +56,56 @@ class CityTableViewController: UITableViewController {
             filterList = list
     
         }
-        tableView.reloadData()
+        updateSearchList(searchTextField.text)
     }
     
-//    private func changeList(_ domestic: Bool) {
-//        tableView.reloadData()
-//    }
-    
+    func updateSearchList(_ searchText: String?) {
+        guard let text = searchText, !text.trimmingCharacters(in: .whitespaces).isEmpty  else {
+            searchList = filterList
+            tableView.reloadData()
+            return
+        }
+        
+        // 공백처리
+        let trimText = text.trimmingCharacters(in: .whitespaces)
+        
+        searchList = filterList.filter { city in
+            
+                let nameSearch = city.name.contains(trimText)
+                let explainSearch = city.explain.contains(trimText)
+            
+                // 대소문자 구분 X
+                let englishNameSearch = city.englishName.lowercased().contains(trimText.lowercased())
 
+                return nameSearch || explainSearch || englishNameSearch
+            }
+
+            tableView.reloadData()
+        }
+    
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return filterList.count
+        return searchList.isEmpty ? filterList.count : searchList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CellType.city.id, for: indexPath) as! CityCell
         
-        cell.city = filterList[indexPath.row]
+        let data = searchList.isEmpty ? filterList[indexPath.row] : searchList[indexPath.row]
+            cell.city = data
         
         return cell
     }
-    
+}
 
+extension CityTableViewController: UITextFieldDelegate {
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder() // 키보드 내리기
+        updateSearchList(textField.text)
+        return true
+    }
 }
