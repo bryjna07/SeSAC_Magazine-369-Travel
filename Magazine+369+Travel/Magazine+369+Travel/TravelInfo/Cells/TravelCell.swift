@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-final class TravelTableViewCell: UITableViewCell {
+final class TravelCell: UITableViewCell {
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!

@@ -1,5 +1,5 @@
 //
-//  MagazineTableViewCell.swift
+//  MagazineCell.swift
 //  Magazine+369+Travel
 //
 //  Created by YoungJin on 7/11/25.
@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-final class MagazineTableViewCell: UITableViewCell {
+final class MagazineCell: UITableViewCell {
     
     @IBOutlet var photoimageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!

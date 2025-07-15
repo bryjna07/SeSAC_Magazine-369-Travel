@@ -14,7 +14,9 @@ final class TravelTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UINib(nibName: Cell.adCellid, bundle: nil), forCellReuseIdentifier: Cell.adCellid)
+        tableView.register(CellType.travel.nib, forCellReuseIdentifier: CellType.travel.id)
+        
+        tableView.register(CellType.ad.nib, forCellReuseIdentifier: CellType.ad.id)
         
         title = Text.travelTitle
         
@@ -36,7 +38,7 @@ final class TravelTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if list[indexPath.row].ad {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.adCellid, for: indexPath) as! AdCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CellType.ad.id, for: indexPath) as! AdCell
             
             cell.travel = list[indexPath.row]
             
@@ -44,7 +46,7 @@ final class TravelTableViewController: UITableViewController {
 
         } else {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.travelCellid, for: indexPath) as! TravelTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CellType.travel.id, for: indexPath) as! TravelCell
 
             cell.travel = list[indexPath.row]
             
@@ -64,4 +66,6 @@ final class TravelTableViewController: UITableViewController {
         list[index].like?.toggle()
         tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
     }
+    
+    
 }

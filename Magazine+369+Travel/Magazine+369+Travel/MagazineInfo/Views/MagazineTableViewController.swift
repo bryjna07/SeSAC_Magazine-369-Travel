@@ -14,11 +14,13 @@ final class MagazineTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.register(CellType.magazine.nib, forCellReuseIdentifier: CellType.magazine.id)
+        
         title = Text.magazineTitle
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         
-        tableView.rowHeight = 420
+        tableView.rowHeight = UITableView.automaticDimension
         
         let magazine = MagazineInfo()
         list = magazine.magazine
@@ -37,7 +39,7 @@ final class MagazineTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.magazineCellid, for: indexPath) as! MagazineTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellType.magazine.id, for: indexPath) as! MagazineCell
         
         cell.magazine = list[indexPath.row]
 

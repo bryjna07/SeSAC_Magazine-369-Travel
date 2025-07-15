@@ -7,12 +7,6 @@
 
 import Foundation
 
-enum Cell {
-    static let magazineCellid = "MagazineCell"
-    static let adCellid = "AdCell"
-    static let travelCellid = "TravelCell"
-}
-
 enum Text {
     
     // Magazine
