@@ -79,7 +79,7 @@ final class TravelCell: UITableViewCell {
         likeButton.setImage(UIImage(systemName: likeImage), for: .normal)
         
         if let imageUrl = travel.image, let url = URL(string: imageUrl) {
-            mainImageView.kf.setImage(with: url, placeholder: UIImage(named: Image.loadImage))
+            mainImageView.setKFImage(from: url)
         }
     }
     

@@ -28,7 +28,7 @@ final class MagazineCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        photoimageView.image = .loading
+//        photoimageView.image = .loading
     }
     
     private func configureUI() {
@@ -54,7 +54,9 @@ final class MagazineCell: UITableViewCell {
         titleLabel.text = magazine.title
         subTitleLabel.text = magazine.subtitle
         dateLabel.text = magazine.date.formatDate()
+        
         guard let url = URL(string: magazine.image) else { return }
-        photoimageView.kf.setImage(with: url, placeholder: UIImage(named: Image.loadImage))
+        
+        photoimageView.setKFImage(from: url)
     }
 }

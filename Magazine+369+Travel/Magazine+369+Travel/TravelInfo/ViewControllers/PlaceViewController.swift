@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 final class PlaceViewController: UIViewController {
 
@@ -54,8 +53,7 @@ final class PlaceViewController: UIViewController {
         
         guard let image = travel.image else { return }
         let url = URL(string: image)
-        placeImageView.kf.setImage(with: url, placeholder: UIImage(resource: .loading))
-        
+        placeImageView.setKFImage(from: url)
     }
     
     @IBAction func backButtonAction(_ sender: UIButton) {

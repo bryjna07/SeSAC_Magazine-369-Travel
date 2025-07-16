@@ -69,7 +69,7 @@ class CityCell: UITableViewCell {
         explainLabel.text = city.explain
         
         let url = URL(string: city.cityImage)
-        cityImageView.kf.setImage(with: url, placeholder: UIImage(named: Image.loadImage))
+        cityImageView.setKFImage(from: url)
     }
 
 }

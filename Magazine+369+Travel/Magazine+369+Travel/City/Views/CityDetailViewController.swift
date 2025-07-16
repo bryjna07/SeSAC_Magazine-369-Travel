@@ -35,7 +35,7 @@ final class CityDetailViewController: UIViewController {
         labels[2].text = city.explain
         
         let url = URL(string: city.cityImage)
-        imageView.kf.setImage(with: url, placeholder: UIImage(named: Image.loadImage))
+        imageView.setKFImage(from: url)
     }
     
 }
