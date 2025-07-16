@@ -29,7 +29,6 @@ final class PlaceViewController: UIViewController {
         placeImageView.layer.cornerRadius = 10
         placeImageView.clipsToBounds = true
         placeImageView.contentMode = .scaleAspectFill
-        placeImageView.backgroundColor = .brown
         
         titleLabel.font = .boldSystemFont(ofSize: 40)
         titleLabel.textAlignment = .center
@@ -38,7 +37,7 @@ final class PlaceViewController: UIViewController {
         subTitleLabel.textAlignment = .center
         subTitleLabel.numberOfLines = 0
         
-        backButton.setTitle("다른 관광지 보러가기", for: .normal)
+        backButton.setTitle(Text.travelBackButton, for: .normal)
         backButton.backgroundColor = .blue
         backButton.setTitleColor(.white, for: .normal)
         backButton.layer.cornerRadius = 16

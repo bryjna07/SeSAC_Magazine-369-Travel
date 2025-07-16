@@ -24,6 +24,10 @@ enum Text {
     static let travelTitle = "도시 상세 정보"
     static let blank = ""
     static let ad = "AD"
+    static let travelBackButton = "다른 관광지 보러가기"
+    
+    static let adMessage = "광고 셀입니다."
+    
 }
 
 enum Image {
@@ -38,6 +42,12 @@ enum Image {
 enum DateText {
     static let beforeText = "yyMMdd"
     static let afterText = "yy년 MM월 dd일"
+}
+
+enum Storyboard {
+    static let main = "Main"
+    static let adVC = "AdViewController"
+    static let placeVC = "PlaceViewController"
 }
 
 /// cell Type 구현해보기

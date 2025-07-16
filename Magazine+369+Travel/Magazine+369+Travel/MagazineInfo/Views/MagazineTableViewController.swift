@@ -10,6 +10,10 @@ import UIKit
 final class MagazineTableViewController: UITableViewController {
     
     private var list: [Magazine] = []
+    
+    private enum Section: Int, CaseIterable {
+        case magazine
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +33,7 @@ final class MagazineTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
        
-        return 1
+        return Section.allCases.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

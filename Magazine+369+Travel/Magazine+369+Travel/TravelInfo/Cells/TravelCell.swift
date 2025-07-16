@@ -63,17 +63,15 @@ final class TravelCell: UITableViewCell {
     }
     
     private func configureUIwithData() {
-        guard let travel else { return }
+        guard let travel,
+              let grade = travel.grade,
+              let saveCount = travel.save,
+              let liked = travel.like else { return }
+
         titleLabel.text = travel.title
         descriptionLabel.text = travel.description
-        
-        guard let grade = travel.grade else { return }
         configureStarImages(grade)
-        
-        guard let saveCount = travel.save else { return }
         saveCountLabel.text = "저장 \(saveCount.formattedWithComma())"
-        
-        guard let liked = travel.like else { return }
         
         let likeImage = liked ? Image.heart : Image.heartFill
         likeButton.setImage(UIImage(systemName: likeImage), for: .normal)

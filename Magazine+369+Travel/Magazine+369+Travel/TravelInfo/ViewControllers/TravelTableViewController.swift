@@ -12,6 +12,10 @@ final class TravelTableViewController: UITableViewController {
     
     private var list: [Travel] = []
 
+    private enum Section: Int, CaseIterable {
+        case travel
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,11 +35,11 @@ final class TravelTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if list[indexPath.row].ad {
-            view.makeToast("광고 셀입니다.", position: .bottom)
+            view.makeToast(Text.adMessage, position: .bottom)
             
-            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let sb = UIStoryboard(name: Storyboard.main, bundle: nil)
             
-            let vc = sb.instantiateViewController(withIdentifier: "AdViewController") as! AdViewController
+            let vc = sb.instantiateViewController(withIdentifier: Storyboard.adVC) as! AdViewController
             
             vc.travel = list[indexPath.row]
             
@@ -44,9 +48,9 @@ final class TravelTableViewController: UITableViewController {
             
         } else {
             
-            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let sb = UIStoryboard(name: Storyboard.main, bundle: nil)
             
-            let vc = sb.instantiateViewController(withIdentifier: "PlaceViewController") as! PlaceViewController
+            let vc = sb.instantiateViewController(withIdentifier: Storyboard.placeVC) as! PlaceViewController
             
             vc.travel = list[indexPath.row]
             
@@ -59,7 +63,7 @@ final class TravelTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
 
-        return 1
+        return Section.allCases.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
