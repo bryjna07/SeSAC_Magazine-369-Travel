@@ -243,7 +243,7 @@
                         <segue destination="q4b-f3-67F" kind="relationship" relationship="viewControllers" id="Fdb-BF-BC6"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="jpj-jJ-YM8"/>
                         <segue destination="EaG-EZ-zTC" kind="relationship" relationship="viewControllers" id="XSG-c3-C4q"/>
-                        <segue destination="gjN-12-8FM" kind="relationship" relationship="viewControllers" id="U3j-g4-LJV"/>
+                        <segue destination="L71-eX-p33" kind="relationship" relationship="viewControllers" id="OXS-WW-hka"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bC4-ls-RPB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -288,82 +288,68 @@
             </objects>
             <point key="canvasLocation" x="1967" y="-27"/>
         </scene>
-        <!--인기도시-->
-        <scene sceneID="Cre-di-QHZ">
+        <!--도시정보-->
+        <scene sceneID="ZRJ-Hf-hxg">
             <objects>
-                <tableViewController storyboardIdentifier="CityTableViewController" id="gjN-12-8FM" customClass="CityTableViewController" customModule="Magazine_369_Travel" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="cMa-xP-bBn">
+                <viewController storyboardIdentifier="CityViewController" id="L71-eX-p33" customClass="CityViewController" customModule="Magazine_369_Travel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lXv-Sb-Gal">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yvh-zW-drL">
+                                <rect key="frame" x="0.0" y="258" width="393" height="477"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ol1-Um-jVx">
+                                <rect key="frame" x="16" y="198" width="361" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="dUA-42-Qky"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedValueChanged:" destination="L71-eX-p33" eventType="valueChanged" id="3ep-1e-avq"/>
+                                </connections>
+                            </segmentedControl>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ke8-rX-b05">
+                                <rect key="frame" x="0.0" y="118" width="393" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="L71-eX-p33" id="k91-uk-oZJ"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="x88-4i-J9F"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="Phy-kA-89y">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="151"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ocD-rp-BhO">
-                                    <rect key="frame" x="24" y="91" width="345" height="45"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="44" id="Uqe-A3-aCZ"/>
-                                    </constraints>
-                                    <segments>
-                                        <segment title="First"/>
-                                        <segment title="Second"/>
-                                    </segments>
-                                    <connections>
-                                        <action selector="segmentedValueChanged:" destination="gjN-12-8FM" eventType="valueChanged" id="xeK-Cv-66G"/>
-                                    </connections>
-                                </segmentedControl>
-                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cr4-Zw-2RB">
-                                    <rect key="frame" x="24" y="24" width="345" height="43"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="44" id="e5R-sT-lJe"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                    <connections>
-                                        <action selector="textFieldEditingChanged:" destination="gjN-12-8FM" eventType="editingChanged" id="syj-ej-ltW"/>
-                                    </connections>
-                                </textField>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstItem="cr4-Zw-2RB" firstAttribute="leading" secondItem="Phy-kA-89y" secondAttribute="leading" constant="24" id="0dL-UG-scN"/>
-                                <constraint firstAttribute="trailing" secondItem="cr4-Zw-2RB" secondAttribute="trailing" constant="24" id="3xb-BI-ZXU"/>
-                                <constraint firstAttribute="trailing" secondItem="ocD-rp-BhO" secondAttribute="trailing" constant="24" id="Vby-r0-1Of"/>
-                                <constraint firstItem="ocD-rp-BhO" firstAttribute="top" secondItem="cr4-Zw-2RB" secondAttribute="bottom" constant="24" id="hqG-GB-wdn"/>
-                                <constraint firstItem="cr4-Zw-2RB" firstAttribute="top" secondItem="Phy-kA-89y" secondAttribute="top" constant="24" id="ojW-h4-WY2"/>
-                                <constraint firstAttribute="bottom" secondItem="ocD-rp-BhO" secondAttribute="bottom" constant="16" id="okk-i8-ElP"/>
-                                <constraint firstItem="ocD-rp-BhO" firstAttribute="leading" secondItem="Phy-kA-89y" secondAttribute="leading" constant="24" id="rdj-h2-4ct"/>
-                            </constraints>
-                        </view>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="zEZ-gI-Cvc">
-                                <rect key="frame" x="0.0" y="201" width="393" height="44.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zEZ-gI-Cvc" id="0vl-Cb-y0x">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="44.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="gjN-12-8FM" id="cDU-VY-K7b"/>
-                            <outlet property="delegate" destination="gjN-12-8FM" id="ftm-jt-SNK"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="인기도시" image="ellipsis.rectangle.fill" catalog="system" id="beh-gU-eOv"/>
+                        <constraints>
+                            <constraint firstItem="ke8-rX-b05" firstAttribute="top" secondItem="x88-4i-J9F" secondAttribute="top" id="4zk-BY-k6t"/>
+                            <constraint firstItem="yvh-zW-drL" firstAttribute="top" secondItem="ol1-Um-jVx" secondAttribute="bottom" constant="16" id="9q4-9g-hZt"/>
+                            <constraint firstItem="x88-4i-J9F" firstAttribute="trailing" secondItem="ke8-rX-b05" secondAttribute="trailing" id="Aa6-5i-3OS"/>
+                            <constraint firstItem="x88-4i-J9F" firstAttribute="trailing" secondItem="yvh-zW-drL" secondAttribute="trailing" id="G1F-0V-lhg"/>
+                            <constraint firstItem="x88-4i-J9F" firstAttribute="trailing" secondItem="ol1-Um-jVx" secondAttribute="trailing" constant="16" id="Xt5-Yu-lQS"/>
+                            <constraint firstItem="x88-4i-J9F" firstAttribute="bottom" secondItem="yvh-zW-drL" secondAttribute="bottom" id="aEG-0X-CYf"/>
+                            <constraint firstItem="yvh-zW-drL" firstAttribute="leading" secondItem="x88-4i-J9F" secondAttribute="leading" id="bgb-c0-NAq"/>
+                            <constraint firstItem="ke8-rX-b05" firstAttribute="leading" secondItem="x88-4i-J9F" secondAttribute="leading" id="det-A1-mEs"/>
+                            <constraint firstItem="ol1-Um-jVx" firstAttribute="leading" secondItem="x88-4i-J9F" secondAttribute="leading" constant="16" id="kpf-2p-W8I"/>
+                            <constraint firstItem="ol1-Um-jVx" firstAttribute="top" secondItem="ke8-rX-b05" secondAttribute="bottom" constant="24" id="ruZ-2Z-q2b"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="도시정보" image="cloud.sleet.fill" catalog="system" id="qDA-SJ-wR9"/>
                     <connections>
-                        <outlet property="searchTextField" destination="cr4-Zw-2RB" id="Ysl-rQ-rTC"/>
-                        <outlet property="segmentControl" destination="ocD-rp-BhO" id="ywT-GI-2MW"/>
+                        <outlet property="searchBar" destination="ke8-rX-b05" id="dLp-31-MQ5"/>
+                        <outlet property="segmentedControl" destination="ol1-Um-jVx" id="MzY-If-IWk"/>
+                        <outlet property="tableView" destination="yvh-zW-drL" id="3cC-gw-ZZi"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZMV-G1-1Sv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ofP-po-obb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2913.740458015267" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="2845" y="-27"/>
         </scene>
     </scenes>
     <resources>
-        <image name="ellipsis.rectangle.fill" catalog="system" width="128" height="79"/>
+        <image name="cloud.sleet.fill" catalog="system" width="118" height="128"/>
         <image name="gamecontroller.fill" catalog="system" width="128" height="79"/>
         <image name="globe" catalog="system" width="128" height="123"/>
         <image name="newspaper.fill" catalog="system" width="128" height="112"/>
