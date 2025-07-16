@@ -125,4 +125,12 @@ extension CityViewController : UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CityDetailViewController") as! CityDetailViewController
+        
+        vc.city = filterList[indexPath.row]
+        
+        present(vc, animated: true)
+    }
 }

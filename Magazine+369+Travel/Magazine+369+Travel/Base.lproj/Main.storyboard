@@ -347,6 +347,67 @@
             </objects>
             <point key="canvasLocation" x="2845" y="-27"/>
         </scene>
+        <!--City Detail View Controller-->
+        <scene sceneID="ZSt-3k-ZXU">
+            <objects>
+                <viewController storyboardIdentifier="CityDetailViewController" id="dX7-nB-kcT" customClass="CityDetailViewController" customModule="Magazine_369_Travel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mbh-ba-8X1">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otx-JO-N54">
+                                <rect key="frame" x="24" y="402" width="345" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gE7-vm-Btf">
+                                <rect key="frame" x="24" y="431" width="345" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7k-bK-Qwp">
+                                <rect key="frame" x="24" y="460" width="345" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7vI-z4-YQg">
+                                <rect key="frame" x="24" y="178" width="345" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="MVQ-5a-Mms"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="EaQ-iq-TDD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="EaQ-iq-TDD" firstAttribute="trailing" secondItem="B7k-bK-Qwp" secondAttribute="trailing" constant="24" id="2Sa-zb-IBy"/>
+                            <constraint firstItem="B7k-bK-Qwp" firstAttribute="leading" secondItem="EaQ-iq-TDD" secondAttribute="leading" constant="24" id="B95-JZ-Efa"/>
+                            <constraint firstItem="otx-JO-N54" firstAttribute="leading" secondItem="EaQ-iq-TDD" secondAttribute="leading" constant="24" id="Fp3-nS-uvQ"/>
+                            <constraint firstItem="gE7-vm-Btf" firstAttribute="top" secondItem="otx-JO-N54" secondAttribute="bottom" constant="8" id="ITE-Zb-ET5"/>
+                            <constraint firstItem="EaQ-iq-TDD" firstAttribute="trailing" secondItem="otx-JO-N54" secondAttribute="trailing" constant="24" id="OJO-5z-cjS"/>
+                            <constraint firstItem="B7k-bK-Qwp" firstAttribute="top" secondItem="gE7-vm-Btf" secondAttribute="bottom" constant="8" id="SW3-ja-uhS"/>
+                            <constraint firstItem="7vI-z4-YQg" firstAttribute="leading" secondItem="EaQ-iq-TDD" secondAttribute="leading" constant="24" id="aAX-47-oDU"/>
+                            <constraint firstItem="gE7-vm-Btf" firstAttribute="leading" secondItem="EaQ-iq-TDD" secondAttribute="leading" constant="24" id="aTT-Yt-V6s"/>
+                            <constraint firstItem="EaQ-iq-TDD" firstAttribute="trailing" secondItem="gE7-vm-Btf" secondAttribute="trailing" constant="24" id="cs4-Uq-lDS"/>
+                            <constraint firstItem="EaQ-iq-TDD" firstAttribute="trailing" secondItem="7vI-z4-YQg" secondAttribute="trailing" constant="24" id="fvR-Yq-9X6"/>
+                            <constraint firstItem="7vI-z4-YQg" firstAttribute="top" secondItem="EaQ-iq-TDD" secondAttribute="top" constant="60" id="gdp-dZ-6YB"/>
+                            <constraint firstItem="otx-JO-N54" firstAttribute="top" secondItem="7vI-z4-YQg" secondAttribute="bottom" constant="24" id="hyv-cS-tPu"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="7vI-z4-YQg" id="N8q-lf-9y4"/>
+                        <outletCollection property="labels" destination="otx-JO-N54" collectionClass="NSMutableArray" id="feg-NM-eZz"/>
+                        <outletCollection property="labels" destination="gE7-vm-Btf" collectionClass="NSMutableArray" id="Agy-nG-5qt"/>
+                        <outletCollection property="labels" destination="B7k-bK-Qwp" collectionClass="NSMutableArray" id="und-re-Dak"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HSS-7i-e8J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2844" y="668"/>
+        </scene>
     </scenes>
     <resources>
         <image name="cloud.sleet.fill" catalog="system" width="118" height="128"/>

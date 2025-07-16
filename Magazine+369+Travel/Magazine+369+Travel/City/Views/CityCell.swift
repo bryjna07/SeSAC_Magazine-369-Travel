@@ -66,7 +66,7 @@ class CityCell: UITableViewCell {
         guard let city else { return }
         cityNameLabels[0].text = city.name
         cityNameLabels[1].text = city.englishName
-        explainLabel.text = " \(city.explain)"
+        explainLabel.text = city.explain
         
         let url = URL(string: city.cityImage)
         cityImageView.kf.setImage(with: url, placeholder: UIImage(named: Image.loadImage))
