@@ -33,6 +33,9 @@ class CityCell: UITableViewCell {
     
     override func prepareForReuse() {
         cityImageView.image = .loading
+        cityNameLabels[0].textColor = .white
+        cityNameLabels[1].textColor = .white
+        explainLabel.textColor = .white
     }
 
     private func configureUI() {

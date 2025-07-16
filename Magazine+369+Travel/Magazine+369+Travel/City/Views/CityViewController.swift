@@ -121,7 +121,13 @@ extension CityViewController : UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellType.city.id, for: indexPath) as! CityCell
         
         let data = searchList.isEmpty ? filterList[indexPath.row] : searchList[indexPath.row]
-            cell.city = data
+        
+        cell.city = data
+        
+        cell.cityNameLabels.forEach {
+            $0.searchTextColor(targetString: searchBar.text ?? "", color: .yellow)
+        }
+        cell.explainLabel.searchTextColor(targetString: searchBar.text ?? "", color: .yellow)
         
         return cell
     }
