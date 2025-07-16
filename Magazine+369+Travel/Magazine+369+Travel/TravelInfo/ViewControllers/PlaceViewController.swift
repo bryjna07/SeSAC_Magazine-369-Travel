@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import Kingfisher
 
-class PlaceViewController: UIViewController {
+final class PlaceViewController: UIViewController {
 
     @IBOutlet var placeImageView: UIImageView!
     
@@ -17,9 +18,12 @@ class PlaceViewController: UIViewController {
     
     @IBOutlet var backButton: UIButton!
     
+    var travel: Travel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        configureUIWithData()
     }
     
     private func configureUI() {
@@ -41,8 +45,17 @@ class PlaceViewController: UIViewController {
         backButton.layer.cornerRadius = 16
         backButton.clipsToBounds = true
         
-        titleLabel.text = "카오산 로드"
-        subTitleLabel.text = "낮과 밤 서로 다른 매력을 지닌 번화한 거리"
+    }
+    
+    private func configureUIWithData() {
+        guard let travel else { return }
+        titleLabel.text = travel.title
+        subTitleLabel.text = travel.description
+        
+        guard let image = travel.image else { return }
+        let url = URL(string: image)
+        placeImageView.kf.setImage(with: url, placeholder: UIImage(resource: .loading))
+        
     }
     
     @IBAction func backButtonAction(_ sender: UIButton) {

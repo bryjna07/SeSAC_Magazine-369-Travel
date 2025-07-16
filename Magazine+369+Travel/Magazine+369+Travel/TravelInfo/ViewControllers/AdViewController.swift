@@ -13,16 +13,19 @@ class AdViewController: UIViewController {
     
     @IBOutlet var exitButton: UIButton!
     
+    var travel: Travel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        adLabel.text = "ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ"
         adLabel.font = .systemFont(ofSize: 30, weight: .medium)
         adLabel.numberOfLines = 0
         
         exitButton.setTitle("X", for: .normal)
         exitButton.setTitleColor(.black, for: .normal)
         
+        guard let travel else { return }
+        adLabel.text = travel.title
     }
     
     @IBAction func exitButtonTapped(_ sender: UIButton) {

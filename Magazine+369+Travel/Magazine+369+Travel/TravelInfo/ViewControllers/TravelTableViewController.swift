@@ -37,6 +37,8 @@ final class TravelTableViewController: UITableViewController {
             
             let vc = sb.instantiateViewController(withIdentifier: "AdViewController") as! AdViewController
             
+            vc.travel = list[indexPath.row]
+            
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true)
             
@@ -45,6 +47,8 @@ final class TravelTableViewController: UITableViewController {
             let sb = UIStoryboard(name: "Main", bundle: nil)
             
             let vc = sb.instantiateViewController(withIdentifier: "PlaceViewController") as! PlaceViewController
+            
+            vc.travel = list[indexPath.row]
             
             navigationController?.pushViewController(vc, animated: true)
         }
