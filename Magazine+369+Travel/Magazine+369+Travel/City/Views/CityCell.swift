@@ -43,13 +43,17 @@ class CityCell: UITableViewCell {
         selectionStyle = .none
         
         cityImageView.contentMode = .scaleAspectFill
+        cityImageView.clipsToBounds = true
+        cityImageView.layer.cornerRadius = 20
+        cityImageView.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMaxYCorner)
         
-        /// 그림자 안먹음
-//        cityImageView.layer.shadowColor = UIColor.black.cgColor
-//        cityImageView.layer.shadowOpacity = 0.4
-//        cityImageView.layer.shadowOffset = CGSize(width: 8, height: 8)
-//        cityImageView.layer.shadowRadius = 20
-    
+        containerView.layer.cornerRadius = 20
+        containerView.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMaxXMaxYCorner)
+        
+        containerView.layer.shadowColor = UIColor.black.cgColor
+        containerView.layer.shadowOpacity = 0.8
+        containerView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        containerView.layer.shadowRadius = 20
         
         cityNameLabels.forEach {
             $0.textColor = .white
