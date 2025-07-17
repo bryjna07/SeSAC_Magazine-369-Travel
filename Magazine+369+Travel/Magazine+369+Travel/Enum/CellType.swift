@@ -22,7 +22,7 @@ enum CellType {
         case .ad:
             return "AdCell"
         case .city:
-            return "CityCell"
+            return "CityCollectionViewCell"
         }
     }
     

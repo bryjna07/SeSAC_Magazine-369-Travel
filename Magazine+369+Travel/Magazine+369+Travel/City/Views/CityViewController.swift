@@ -8,12 +8,12 @@
 import UIKit
 
 final class CityViewController: UIViewController {
-
+    
     @IBOutlet var searchBar: UISearchBar!
     
     @IBOutlet var segmentedControl: UISegmentedControl!
     
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet var collectionView: UICollectionView!
     
     var list: [City] = []
     
@@ -26,9 +26,9 @@ final class CityViewController: UIViewController {
         list = CityInfo().city
         setUpSearchBar()
         setUpSegmentedControl()
-        setUpTableView()
+        setUpCollectionView()
     }
-
+    
     private func setUpSearchBar() {
         searchBar.delegate = self
     }
@@ -46,16 +46,24 @@ final class CityViewController: UIViewController {
         segmentedValueChanged(segmentedControl)
     }
     
-    private func setUpTableView() {
+    private func setUpCollectionView() {
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
-        tableView.rowHeight = 200
-        tableView.separatorStyle = .none
-        
-        tableView.register(CellType.city.nib, forCellReuseIdentifier: CellType.city.id)
+        collectionView.register(CellType.city.nib, forCellWithReuseIdentifier: CellType.city.id)
         list = CityInfo().city
+        
+        let layout = UICollectionViewFlowLayout()
+        let cellWidth = UIScreen.main.bounds.width - 16 * 3
+        layout.itemSize = .init(width: cellWidth / 2, height: cellWidth / 2 + 68)
+        layout.sectionInset = .init(top: 16, left: 16, bottom: 16, right: 16)
+        layout.minimumInteritemSpacing = 16 // 셀과 셀 사이
+        layout.minimumLineSpacing = 16 // 위 아래 간격
+        layout.scrollDirection = .vertical
+        collectionView.collectionViewLayout = layout
+        collectionView.showsVerticalScrollIndicator = false
+        
     }
     
     @IBAction func segmentedValueChanged(_ sender: UISegmentedControl) {
@@ -79,17 +87,17 @@ final class CityViewController: UIViewController {
         
         searchList = filterList.filter { city in
             
-                let nameSearch = city.name.contains(trimText)
-                let explainSearch = city.explain.contains(trimText)
+            let nameSearch = city.name.contains(trimText)
+            let explainSearch = city.explain.contains(trimText)
             
-                // 대소문자 구분 X
-                let englishNameSearch = city.englishName.lowercased().contains(trimText.lowercased())
-
-                return nameSearch || explainSearch || englishNameSearch
-            }
-
-            tableView.reloadData()
+            // 대소문자 구분 X
+            let englishNameSearch = city.englishName.lowercased().contains(trimText.lowercased())
+            
+            return nameSearch || explainSearch || englishNameSearch
         }
+        
+        collectionView.reloadData()
+    }
 }
 
 extension CityViewController : UISearchBarDelegate {
@@ -97,7 +105,7 @@ extension CityViewController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, !text.trimmingCharacters(in: .whitespaces).isEmpty else {
             searchList = filterList
-            tableView.reloadData()
+            collectionView.reloadData()
             return
         }
         updateSearchList(text)
@@ -109,30 +117,28 @@ extension CityViewController : UISearchBarDelegate {
     
 }
 
-extension CityViewController : UITableViewDelegate, UITableViewDataSource {
+extension CityViewController : UICollectionViewDelegate, UICollectionViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return searchList.isEmpty ? filterList.count : searchList.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellType.city.id, for: indexPath) as! CityCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType.city.id, for: indexPath) as! CityCollectionViewCell
         
         let data = searchList.isEmpty ? filterList[indexPath.row] : searchList[indexPath.row]
         
         cell.city = data
         
-        cell.cityNameLabels.forEach {
-            $0.searchTextColor(targetString: searchBar.text ?? "", color: .yellow)
-        }
+        cell.cityNameLabel.searchTextColor(targetString: searchBar.text ?? "", color: .yellow)
+        
         cell.explainLabel.searchTextColor(targetString: searchBar.text ?? "", color: .yellow)
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "CityDetailViewController") as! CityDetailViewController
         
         vc.city = filterList[indexPath.row]

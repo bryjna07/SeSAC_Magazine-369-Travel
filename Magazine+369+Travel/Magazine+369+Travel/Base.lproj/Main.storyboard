@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -296,10 +297,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yvh-zW-drL">
-                                <rect key="frame" x="0.0" y="258" width="393" height="477"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ol1-Um-jVx">
                                 <rect key="frame" x="16" y="198" width="361" height="45"/>
                                 <constraints>
@@ -320,27 +317,47 @@
                                     <outlet property="delegate" destination="L71-eX-p33" id="k91-uk-oZJ"/>
                                 </connections>
                             </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JNb-JV-37s">
+                                <rect key="frame" x="0.0" y="258" width="393" height="477"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4kR-9x-HgG">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ucS-Cj-bjP">
+                                        <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1rZ-It-jsW">
+                                            <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="x88-4i-J9F"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="JNb-JV-37s" firstAttribute="leading" secondItem="x88-4i-J9F" secondAttribute="leading" id="0EE-zi-rOj"/>
                             <constraint firstItem="ke8-rX-b05" firstAttribute="top" secondItem="x88-4i-J9F" secondAttribute="top" id="4zk-BY-k6t"/>
-                            <constraint firstItem="yvh-zW-drL" firstAttribute="top" secondItem="ol1-Um-jVx" secondAttribute="bottom" constant="16" id="9q4-9g-hZt"/>
                             <constraint firstItem="x88-4i-J9F" firstAttribute="trailing" secondItem="ke8-rX-b05" secondAttribute="trailing" id="Aa6-5i-3OS"/>
-                            <constraint firstItem="x88-4i-J9F" firstAttribute="trailing" secondItem="yvh-zW-drL" secondAttribute="trailing" id="G1F-0V-lhg"/>
+                            <constraint firstItem="JNb-JV-37s" firstAttribute="top" secondItem="ol1-Um-jVx" secondAttribute="bottom" constant="16" id="De9-Uc-Nc5"/>
+                            <constraint firstItem="x88-4i-J9F" firstAttribute="trailing" secondItem="JNb-JV-37s" secondAttribute="trailing" id="SU2-mh-FnQ"/>
                             <constraint firstItem="x88-4i-J9F" firstAttribute="trailing" secondItem="ol1-Um-jVx" secondAttribute="trailing" constant="16" id="Xt5-Yu-lQS"/>
-                            <constraint firstItem="x88-4i-J9F" firstAttribute="bottom" secondItem="yvh-zW-drL" secondAttribute="bottom" id="aEG-0X-CYf"/>
-                            <constraint firstItem="yvh-zW-drL" firstAttribute="leading" secondItem="x88-4i-J9F" secondAttribute="leading" id="bgb-c0-NAq"/>
                             <constraint firstItem="ke8-rX-b05" firstAttribute="leading" secondItem="x88-4i-J9F" secondAttribute="leading" id="det-A1-mEs"/>
                             <constraint firstItem="ol1-Um-jVx" firstAttribute="leading" secondItem="x88-4i-J9F" secondAttribute="leading" constant="16" id="kpf-2p-W8I"/>
+                            <constraint firstItem="x88-4i-J9F" firstAttribute="bottom" secondItem="JNb-JV-37s" secondAttribute="bottom" id="qHe-zF-bIe"/>
                             <constraint firstItem="ol1-Um-jVx" firstAttribute="top" secondItem="ke8-rX-b05" secondAttribute="bottom" constant="24" id="ruZ-2Z-q2b"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="도시정보" image="cloud.sleet.fill" catalog="system" id="qDA-SJ-wR9"/>
                     <connections>
+                        <outlet property="collectionView" destination="JNb-JV-37s" id="jAw-tT-Jef"/>
                         <outlet property="searchBar" destination="ke8-rX-b05" id="dLp-31-MQ5"/>
                         <outlet property="segmentedControl" destination="ol1-Um-jVx" id="MzY-If-IWk"/>
-                        <outlet property="tableView" destination="yvh-zW-drL" id="3cC-gw-ZZi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ofP-po-obb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

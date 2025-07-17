@@ -19,7 +19,7 @@ extension UIImageView {
             self.image = placeholder
             return
         }
-
+// 리사이징 +
         let processor = DownsamplingImageProcessor(size: self.bounds.size)
             |> RoundCornerImageProcessor(cornerRadius: cornerRadius)
         let options: KingfisherOptionsInfo = [
