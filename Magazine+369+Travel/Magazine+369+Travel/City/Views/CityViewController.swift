@@ -50,7 +50,6 @@ final class CityViewController: UIViewController {
         collectionView.dataSource = self
         
         collectionView.register(CellType.city.nib, forCellWithReuseIdentifier: CellType.city.id)
-        list = CityInfo().city
         
         let layout = UICollectionViewFlowLayout()
         let cellWidth = UIScreen.main.bounds.width - 16 * 3
@@ -134,7 +133,9 @@ extension CityViewController : UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "CityDetailViewController") as! CityDetailViewController
         
-        vc.city = filterList[indexPath.row]
+        let data = searchList.isEmpty ? filterList[indexPath.row] : searchList[indexPath.row]
+        
+        vc.city = data
         
         present(vc, animated: true)
     }
