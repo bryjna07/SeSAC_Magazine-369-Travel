@@ -34,15 +34,13 @@ final class CityViewController: UIViewController {
     }
     
     private func setUpSegmentedControl() {
-        
         segmentedControl.removeAllSegments()
         
-        segmentedControl.insertSegment(withTitle: "모두", at: 0, animated: true)
-        segmentedControl.insertSegment(withTitle: "국내", at: 1, animated: true)
-        segmentedControl.insertSegment(withTitle: "해외", at: 2, animated: true)
+        for (index, type) in SegmentType.allCases.enumerated() {
+            segmentedControl.insertSegment(withTitle: type.title, at: index, animated: true)
+        }
         
-        segmentedControl.selectedSegmentIndex = 0
-        
+        segmentedControl.selectedSegmentIndex = SegmentType.all.rawValue
         segmentedValueChanged(segmentedControl)
     }
     
@@ -67,17 +65,12 @@ final class CityViewController: UIViewController {
     }
     
     @IBAction func segmentedValueChanged(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            filterList = list
-        case 1:
-            filterList = list.filter { $0.domesticTravel }
-        case 2:
-            filterList = list.filter { !$0.domesticTravel }
-        default:
-            filterList = list
-        }
-        searchBarSearchButtonClicked(searchBar)
+        guard let selectedType = SegmentType(rawValue: sender.selectedSegmentIndex) else {
+                return
+            }
+            
+            filterList = selectedType.filtered(from: list)
+            searchBarSearchButtonClicked(searchBar)
     }
     
     private func updateSearchList(_ searchText: String) {
